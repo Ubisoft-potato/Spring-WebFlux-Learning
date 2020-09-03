@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: webFlux-provider
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: fluxDB
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
