@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: webFlux-consumer
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+server:
+  port: 8848
+
+management:
+  auditevents:
+    enabled: true
+  endpoint:
+    beans:
+      enabled: true
+
