@@ -1,3 +1,7 @@
+server:
+  port: 8848
+
+
 spring:
   application:
     name: webFlux-consumer
@@ -10,14 +14,9 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
+      cache:
+        ttl: 30s
+        capacity: 256
 
-server:
-  port: 8848
 
-management:
-  auditevents:
-    enabled: true
-  endpoint:
-    beans:
-      enabled: true
 

@@ -38,6 +38,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <!-- Caffeine cache-->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
         <!-- consul-discovery-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -58,6 +63,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>org.cyka.WebFluxConsumerApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
