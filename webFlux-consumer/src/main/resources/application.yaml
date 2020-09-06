@@ -1,7 +1,6 @@
 server:
   port: 8848
 
-
 spring:
   application:
     name: webFlux-consumer
@@ -17,6 +16,6 @@ spring:
       cache:
         ttl: 30s
         capacity: 256
-
-
-
+    circuitbreaker:
+      hystrix:
+        enabled: true

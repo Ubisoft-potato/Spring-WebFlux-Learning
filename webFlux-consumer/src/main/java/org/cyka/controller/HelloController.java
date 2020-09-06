@@ -1,6 +1,7 @@
 package org.cyka.controller;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.hystrix.HystrixCommands;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -14,12 +15,22 @@ public class HelloController {
 
   @GetMapping("/loadBalancedCall")
   public Mono<String> loadBalancedCall() {
-    return loadBalancedClient.get().uri("/hello").retrieve().bodyToMono(String.class);
+    return HystrixCommands.from(callHelloEndpoint(loadBalancedClient))
+        .fallback(Mono.just("service down"))
+        .commandName("loadBalanceCall")
+        .toMono();
   }
 
   @GetMapping("/nonLoadBalancedCall")
   public Mono<String> nonLoadBalancedCall() {
-    return nonLoadBalancedClient.get().uri("/hello").retrieve().bodyToMono(String.class);
+    return HystrixCommands.from(callHelloEndpoint(nonLoadBalancedClient))
+        .fallback(Mono.just("service down"))
+        .commandName("nonLoadBalanced")
+        .toMono();
+  }
+
+  private Mono<String> callHelloEndpoint(WebClient client) {
+    return client.get().uri("/hello").retrieve().bodyToMono(String.class);
   }
 
   public HelloController(
