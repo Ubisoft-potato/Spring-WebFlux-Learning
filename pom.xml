@@ -11,6 +11,8 @@
     <modules>
         <module>webFlux-provider</module>
         <module>webFlux-consumer</module>
+        <module>webFlux-gateway</module>
+        <module>auth-server</module>
     </modules>
     <packaging>pom</packaging>
 
