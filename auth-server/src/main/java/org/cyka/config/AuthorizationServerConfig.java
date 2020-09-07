@@ -1,6 +1,9 @@
 package org.cyka.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -20,21 +23,22 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
   }
 
   @Override
-  public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-  }
+  public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {}
 
   @Override
   public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
     clients
         .inMemory()
-        .withClient("clientapp")
+        .withClient("webFlux-gateway")
         .secret("123456")
-        .authorizedGrantTypes("password", "authorization_code", "refresh_token")
-        .authorities("READ_ONLY_CLIENT")
-        .scopes("read_profile_info")
+        .authorizedGrantTypes("password", "refresh_token")
         .resourceIds("oauth2-resource")
-        .redirectUris("http://localhost:8081/login")
-        .accessTokenValiditySeconds(120)
+        .accessTokenValiditySeconds(3600)
         .refreshTokenValiditySeconds(240000);
+  }
+
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
   }
 }
