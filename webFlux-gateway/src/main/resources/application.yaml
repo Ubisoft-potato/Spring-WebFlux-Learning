@@ -1,4 +1,19 @@
-
+spring:
+  application:
+    name: webFlux-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+    loadbalancer:
+      ribbon:
+        enabled: false
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
 
 
 
