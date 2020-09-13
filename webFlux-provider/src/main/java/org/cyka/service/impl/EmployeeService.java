@@ -39,7 +39,7 @@ public class EmployeeService implements IEmployeeService {
 
   @Cacheable
   public Flux<Employee> findAll() {
-    return employeeRepo.findAll().delayElements(Duration.ofMillis(1000), Schedulers.elastic());
+    return employeeRepo.findAll();
   }
 
   @CachePut(key = "#e.id")
