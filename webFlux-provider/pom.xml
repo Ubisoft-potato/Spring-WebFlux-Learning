@@ -22,15 +22,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->
-<!--        </dependency>-->
-        <!--        &lt;!&ndash;reactive redis&ndash;&gt;-->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>-->
+        <!--            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->
         <!--        </dependency>-->
+        <!--reactive redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency>
+        <!-- for redis reactive connection pool-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
 
         <!--Test-->
         <dependency>

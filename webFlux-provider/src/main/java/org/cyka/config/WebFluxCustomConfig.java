@@ -12,8 +12,6 @@ import org.springframework.web.reactive.config.WebFluxConfigurer;
 public class WebFluxCustomConfig implements WebFluxConfigurer {
   @Override
   public void configureHttpMessageCodecs(ServerCodecConfigurer configurer) {
-    log.info("Server Http Readers: {}", configurer.getReaders());
-    log.info("Server Http Writers: {}", configurer.getWriters());
     configurer.defaultCodecs().maxInMemorySize(512 * 1024);
     configurer.defaultCodecs().enableLoggingRequestDetails(true);
   }

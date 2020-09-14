@@ -2,6 +2,7 @@ package org.cyka.controller;
 
 import org.cyka.model.Employee;
 import org.cyka.service.impl.EmployeeService;
+import org.springframework.cache.CacheManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class EmployeeController {
   public ResponseEntity<Mono<Employee>> findById(@PathVariable("id") Integer id) {
     Mono<Employee> e = employeeService.findById(id);
     HttpStatus status = e != null ? HttpStatus.OK : HttpStatus.NOT_FOUND;
-    return new ResponseEntity<Mono<Employee>>(e, status);
+    return new ResponseEntity<>(e, status);
   }
 
   @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
