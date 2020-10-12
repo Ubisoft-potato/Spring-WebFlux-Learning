@@ -13,6 +13,7 @@
         <module>webFlux-consumer</module>
         <module>webFlux-gateway</module>
         <module>auth-server</module>
+        <module>reactor-train</module>
     </modules>
     <packaging>pom</packaging>
 
