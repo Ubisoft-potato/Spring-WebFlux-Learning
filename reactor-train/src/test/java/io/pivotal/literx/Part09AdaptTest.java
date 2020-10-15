@@ -16,8 +16,6 @@
 
 package io.pivotal.literx;
 
-import java.util.concurrent.CompletableFuture;
-
 import io.pivotal.literx.domain.User;
 import io.pivotal.literx.repository.ReactiveRepository;
 import io.pivotal.literx.repository.ReactiveUserRepository;
@@ -30,64 +28,63 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+import java.util.concurrent.CompletableFuture;
+
 /**
  * Learn how to adapt from/to RxJava 3 Observable/Single/Flowable and Java 8+ CompletableFuture.
  *
- * Mono and Flux already implements Reactive Streams interfaces so they are natively
- * Reactive Streams compliant + there are {@link Mono#from(Publisher)} and {@link Flux#from(Publisher)}
+ * <p>Mono and Flux already implements Reactive Streams interfaces so they are natively Reactive
+ * Streams compliant + there are {@link Mono#from(Publisher)} and {@link Flux#from(Publisher)}
  * factory methods.
  *
- * For RxJava 3, you should not use Reactor Adapter but only RxJava 3 and Reactor Core.
+ * <p>For RxJava 3, you should not use Reactor Adapter but only RxJava 3 and Reactor Core.
  *
  * @author Sebastien Deleuze
  */
 public class Part09AdaptTest {
 
-	Part09Adapt workshop = new Part09Adapt();
-	ReactiveRepository<User> repository = new ReactiveUserRepository();
+  Part09Adapt workshop = new Part09Adapt();
+  ReactiveRepository<User> repository = new ReactiveUserRepository();
 
-//========================================================================================
+  // ========================================================================================
 
-	@Test
-	public void adaptToFlowable() {
-		Flux<User> flux = repository.findAll();
-		Flowable<User> flowable = workshop.fromFluxToFlowable(flux);
-		StepVerifier.create(workshop.fromFlowableToFlux(flowable))
-				.expectNext(User.SKYLER, User.JESSE, User.WALTER, User.SAUL)
-				.verifyComplete();
-	}
+  @Test
+  public void adaptToFlowable() {
+    Flux<User> flux = repository.findAll();
+    Flowable<User> flowable = workshop.fromFluxToFlowable(flux);
+    StepVerifier.create(workshop.fromFlowableToFlux(flowable))
+        .expectNext(User.SKYLER, User.JESSE, User.WALTER, User.SAUL)
+        .verifyComplete();
+  }
 
-//========================================================================================
+  // ========================================================================================
 
-	@Test
-	public void adaptToObservable() {
-		Flux<User> flux = repository.findAll();
-		Observable<User> observable = workshop.fromFluxToObservable(flux);
-		StepVerifier.create(workshop.fromObservableToFlux(observable))
-				.expectNext(User.SKYLER, User.JESSE, User.WALTER, User.SAUL)
-				.verifyComplete();
-	}
+  @Test
+  public void adaptToObservable() {
+    Flux<User> flux = repository.findAll();
+    Observable<User> observable = workshop.fromFluxToObservable(flux);
+    StepVerifier.create(workshop.fromObservableToFlux(observable))
+        .expectNext(User.SKYLER, User.JESSE, User.WALTER, User.SAUL)
+        .verifyComplete();
+  }
 
-//========================================================================================
+  // ========================================================================================
 
-	@Test
-	public void adaptToSingle() {
-		Mono<User> mono = repository.findFirst();
-		Single<User> single = workshop.fromMonoToSingle(mono);
-		StepVerifier.create(workshop.fromSingleToMono(single))
-				.expectNext(User.SKYLER)
-				.verifyComplete();
-	}
+  @Test
+  public void adaptToSingle() {
+    Mono<User> mono = repository.findFirst();
+    Single<User> single = workshop.fromMonoToSingle(mono);
+    StepVerifier.create(workshop.fromSingleToMono(single)).expectNext(User.SKYLER).verifyComplete();
+  }
 
-//========================================================================================
+  // ========================================================================================
 
-	@Test
-	public void adaptToCompletableFuture() {
-		Mono<User> mono = repository.findFirst();
-		CompletableFuture<User> future = workshop.fromMonoToCompletableFuture(mono);
-		StepVerifier.create(workshop.fromCompletableFutureToMono(future))
-				.expectNext(User.SKYLER)
-				.verifyComplete();
-	}
-
+  @Test
+  public void adaptToCompletableFuture() {
+    Mono<User> mono = repository.findFirst();
+    CompletableFuture<User> future = workshop.fromMonoToCompletableFuture(mono);
+    StepVerifier.create(workshop.fromCompletableFutureToMono(future))
+        .expectNext(User.SKYLER)
+        .verifyComplete();
+  }
 }

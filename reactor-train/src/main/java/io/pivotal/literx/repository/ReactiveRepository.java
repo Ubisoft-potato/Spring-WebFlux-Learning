@@ -6,11 +6,11 @@ import reactor.core.publisher.Mono;
 
 public interface ReactiveRepository<T> {
 
-	Mono<Void> save(Publisher<T> publisher);
+  Mono<Void> save(Publisher<T> publisher);
 
-	Mono<T> findFirst();
+  Mono<T> findFirst();
 
-	Flux<T> findAll();
+  Flux<T> findAll();
 
-	Mono<T> findById(String id);
+  Mono<T> findById(String id);
 }
