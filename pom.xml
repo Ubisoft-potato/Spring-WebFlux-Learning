@@ -6,14 +6,14 @@
 
     <groupId>cyka.org</groupId>
     <artifactId>Spring-WebFlux-Learning</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <description>spring webFlux inAction</description>
     <modules>
         <module>webFlux-provider</module>
         <module>webFlux-consumer</module>
         <module>webFlux-gateway</module>
         <module>auth-server</module>
-        <module>reactor-train</module>
+        <module>reactor-training</module>
     </modules>
     <packaging>pom</packaging>
 
