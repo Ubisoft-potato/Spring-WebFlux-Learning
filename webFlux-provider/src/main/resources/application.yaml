@@ -29,6 +29,9 @@ spring:
       discovery:
         prefer-ip-address: true
   r2dbc:
-    url: r2dbc:pool:mysql://127.0.0.1:3306/demodb
+    pool:
+      initial-size: 4
+      max-size: 4
+    url: r2dbc:pool:mysql://127.0.0.1:3306/reactive
     username: root
     password: root

@@ -15,5 +15,4 @@ public class WebFluxCustomConfig implements WebFluxConfigurer {
     configurer.defaultCodecs().maxInMemorySize(512 * 1024);
     configurer.defaultCodecs().enableLoggingRequestDetails(true);
   }
-
 }

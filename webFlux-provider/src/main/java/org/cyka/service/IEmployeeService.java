@@ -6,15 +6,15 @@ import reactor.core.publisher.Mono;
 
 public interface IEmployeeService {
 
-    void create(Employee e);
+  void create(Employee e);
 
-    Mono<Employee> findById(Integer id);
+  Mono<Employee> findById(Integer id);
 
-    Flux<Employee> findByName(String name);
+  Flux<Employee> findByName(String name);
 
-    Flux<Employee> findAll();
+  Flux<Employee> findAll();
 
-    Mono<Employee> update(Employee e);
+  Mono<Employee> update(Employee e);
 
-    Mono<Void> delete(Integer id);
+  Mono<Void> delete(Integer id);
 }

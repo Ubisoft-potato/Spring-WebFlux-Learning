@@ -2,7 +2,6 @@ package org.cyka.controller;
 
 import org.cyka.model.Employee;
 import org.cyka.service.impl.EmployeeService;
-import org.springframework.cache.CacheManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

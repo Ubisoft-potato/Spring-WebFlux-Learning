@@ -1,6 +1,5 @@
 package org.cyka.controller;
 
-import org.cyka.model.Employee;
 import org.reactivestreams.Publisher;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
