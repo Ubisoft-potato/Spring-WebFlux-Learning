@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  redis:
+    database: 0
+    host: localhost
+    port: 30003
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 30s
+        max-idle: 8
+        min-idle: 0
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  application:
+    name: webFlux-provider
+  data:
+    mongodb:
+      host: localhost
+      port: 32706
+      database: fluxDB
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+  r2dbc:
+    pool:
+      initial-size: 8
+      max-size: 8
+    url: r2dbc:pool:mysql://127.0.0.1:30001/reactive
+    username: root
+    password: root
