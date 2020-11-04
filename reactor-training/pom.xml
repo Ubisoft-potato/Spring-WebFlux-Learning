@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>reactor-train</artifactId>
+    <artifactId>reactor-training</artifactId>
 
 
     <properties>
@@ -26,8 +26,7 @@
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
         </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
+        <dependency> <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
         <dependency>
