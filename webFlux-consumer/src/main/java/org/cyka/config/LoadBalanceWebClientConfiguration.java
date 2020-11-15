@@ -27,7 +27,7 @@ public class LoadBalanceWebClientConfiguration {
     return WebClient.builder();
   }
   /**
-   * non loadBalanced webclient as the priamry
+   * non loadBalanced webclient as the primary
    *
    * @return non loadBalanced webclient
    */
