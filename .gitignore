@@ -23,3 +23,9 @@
 hs_err_pid*
 
 .idea
+Spring-WebFlux-Learning.iml
+auth-server/auth-server.iml
+reactor-training/reactor-training.iml
+webFlux-consumer/webFlux-consumer.iml
+webFlux-gateway/webFlux-gateway.iml
+webFlux-provider/webFlux-provider.iml
